@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Idle Hunter Wiki
 
-## Getting Started
+Community wiki for **Idle Hunter**, built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local   # add Supabase keys
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Supabase (auth & admin)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a project at [supabase.com](https://supabase.com).
+2. Copy URL and anon key to `.env.local`.
+3. Run `supabase/schema.sql` in the SQL Editor.
+4. See [supabase/README.md](supabase/README.md) for details.
 
-## Learn More
+**Routes:** `/sign-up`, `/login`, `/account`, `/admin` (admins only).
 
-To learn more about Next.js, take a look at the following resources:
+## Adding articles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a new `.md` file in `content/wiki/`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```yaml
+---
+title: My article
+description: Short summary for search and cards
+category: guides
+tags: [tag1, tag2]
+featured: false
+order: 10
+updatedAt: "2026-05-29"
+---
 
-## Deploy on Vercel
+Your Markdown content...
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Categories: `getting-started`, `classes`, `equipment`, `skills`, `world`, `bosses`, `resources`, `guides`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Production build
+
+```bash
+npm run build
+npm start
+```
