@@ -4,11 +4,14 @@ import type { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { isSupabaseConfigured } from "@/lib/supabase/config";
+import type { SupabasePublicConfig } from "@/lib/supabase/config";
 import { profileFromAuthUser } from "@/lib/profile-from-user";
 import type { Profile } from "@/types/auth";
 
-export function useUserProfile(initialProfile: Profile | null = null) {
+export function useUserProfile(
+  initialProfile: Profile | null = null,
+  authConfig: SupabasePublicConfig | null = null,
+) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [profile, setProfile] = useState<Profile | null>(initialProfile);
@@ -28,12 +31,12 @@ export function useUserProfile(initialProfile: Profile | null = null) {
   useEffect(() => {
     if (!mounted) return;
 
-    if (!isSupabaseConfigured()) {
+    if (!authConfig) {
       setLoading(false);
       return;
     }
 
-    const supabase = createClient();
+    const supabase = createClient(authConfig);
 
     async function resolveProfile(user: User): Promise<Profile> {
       const { data } = await supabase
@@ -91,7 +94,12 @@ export function useUserProfile(initialProfile: Profile | null = null) {
     });
 
     return () => subscription.unsubscribe();
-  }, [mounted, router]);
+  }, [mounted, router, authConfig]);
 
-  return { mounted, profile, loading, configured: isSupabaseConfigured() };
+  return {
+    mounted,
+    profile,
+    loading,
+    configured: authConfig !== null,
+  };
 }

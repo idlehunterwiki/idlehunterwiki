@@ -16,22 +16,30 @@ import {
 } from "@/components/ui/NavIconButton";
 import { useArticleSearch } from "@/components/wiki/useArticleSearch";
 import type { Profile } from "@/types/auth";
+import type { SupabasePublicConfig } from "@/lib/supabase/config";
 import type { WikiArticleSummary } from "@/types/wiki";
 
 interface SiteHeaderProps {
   articles: WikiArticleSummary[];
   initialProfile: Profile | null;
+  authConfig: SupabasePublicConfig | null;
 }
 
-export function SiteHeader({ articles, initialProfile }: SiteHeaderProps) {
+export function SiteHeader({
+  articles,
+  initialProfile,
+  authConfig,
+}: SiteHeaderProps) {
   const pathname = usePathname();
   const headerRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const { query, setQuery, results } = useArticleSearch(articles);
-  const { mounted, profile, loading, configured } =
-    useUserProfile(initialProfile);
+  const { mounted, profile, loading, configured } = useUserProfile(
+    initialProfile,
+    authConfig,
+  );
 
   const showSearchResults = searchOpen && query.trim().length >= 2;
 
