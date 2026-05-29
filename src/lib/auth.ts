@@ -3,8 +3,11 @@ import type { Profile } from "@/types/auth";
 export { roleLabel } from "@/lib/role-label";
 import { profileFromAuthUser } from "@/lib/profile-from-user";
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 export async function getSessionUser() {
+  if (!isSupabaseConfigured()) return null;
+
   const supabase = await createClient();
   const {
     data: { user },
@@ -13,6 +16,8 @@ export async function getSessionUser() {
 }
 
 export async function getProfile(userId: string): Promise<Profile | null> {
+  if (!isSupabaseConfigured()) return null;
+
   const supabase = await createClient();
   const { data } = await supabase
     .from("profiles")
