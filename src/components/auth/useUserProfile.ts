@@ -4,14 +4,18 @@ import type { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import type { SupabasePublicConfig } from "@/lib/supabase/config";
+import {
+  resolveSupabasePublicConfig,
+  type SupabasePublicConfig,
+} from "@/lib/supabase/config";
 import { profileFromAuthUser } from "@/lib/profile-from-user";
 import type { Profile } from "@/types/auth";
 
 export function useUserProfile(
   initialProfile: Profile | null = null,
-  authConfig: SupabasePublicConfig | null = null,
+  serverAuthConfig: SupabasePublicConfig | null = null,
 ) {
+  const authConfig = resolveSupabasePublicConfig(serverAuthConfig);
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [profile, setProfile] = useState<Profile | null>(initialProfile);

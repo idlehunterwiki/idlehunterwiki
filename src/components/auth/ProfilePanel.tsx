@@ -369,15 +369,30 @@ interface ProfilePanelProps {
   profile: Profile | null;
   loading?: boolean;
   panelOpen: boolean;
+  authConfigured?: boolean;
 }
 
 export function ProfilePanel({
   profile,
   loading = false,
   panelOpen,
+  authConfigured = true,
 }: ProfilePanelProps) {
   if (loading) {
     return <ProfilePanelLoading />;
+  }
+
+  if (!authConfigured && !profile) {
+    return (
+      <div className="profile-panel w-full">
+        <p className="text-sm text-zinc-500">
+          Sign-in is not available right now. Add{" "}
+          <code className="text-amber">NEXT_PUBLIC_SUPABASE_URL</code> and{" "}
+          <code className="text-amber">NEXT_PUBLIC_SUPABASE_ANON_KEY</code> in
+          Vercel, then redeploy.
+        </p>
+      </div>
+    );
   }
 
   return (

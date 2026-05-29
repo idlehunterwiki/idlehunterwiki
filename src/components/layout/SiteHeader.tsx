@@ -162,15 +162,13 @@ export function SiteHeader({
               </NavIconButton>
             </div>
 
-            {configured && (
-              <UserMenuButton
-                open={profileOpen}
-                loading={loading}
-                mounted={mounted}
-                profile={profile}
-                onToggle={toggleProfile}
-              />
-            )}
+            <UserMenuButton
+              open={profileOpen}
+              loading={loading}
+              mounted={mounted}
+              profile={profile}
+              onToggle={toggleProfile}
+            />
           </div>
         </div>
 
@@ -183,15 +181,14 @@ export function SiteHeader({
           />
         </NavSlidePanel>
 
-        {configured && (
-          <NavSlidePanel open={profileOpen} aria-label="Account">
-            <ProfilePanel
-              profile={profile}
-              loading={loading}
-              panelOpen={profileOpen}
-            />
-          </NavSlidePanel>
-        )}
+        <NavSlidePanel open={profileOpen} aria-label="Account">
+          <ProfilePanel
+            profile={profile}
+            loading={loading}
+            panelOpen={profileOpen}
+            authConfigured={configured}
+          />
+        </NavSlidePanel>
 
         <NavSlidePanel open={menuOpen}>
           <NavMenuPanel onNavigate={() => setMenuOpen(false)} />

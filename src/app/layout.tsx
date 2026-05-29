@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   description: "The community wiki for Idle Hunter.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
   children,
 }: Readonly<{
