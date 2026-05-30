@@ -29,7 +29,7 @@ Create a new `.md` file in `content/wiki/`:
 ---
 title: My article
 description: Short summary for search and cards
-category: guides
+category: game-modes
 tags: [tag1, tag2]
 featured: false
 order: 10
@@ -39,7 +39,7 @@ updatedAt: "2026-05-29"
 Your Markdown content...
 ```
 
-Categories: `getting-started`, `classes`, `equipment`, `skills`, `world`, `bosses`, `resources`, `guides`.
+Categories: `getting-started`, `heroes-classes`, `gear-items`, `gems`, `talents`, `hunting-dungeons`, `currencies`, `game-modes`.
 
 ## Production build
 

@@ -7,26 +7,19 @@ export function CategoryTile({ category }: { category: CategoryMeta }) {
   return (
     <Link
       href={`/category/${category.id}`}
-      className={`group relative flex aspect-[5/3] overflow-hidden rounded-xl border border-border bg-gradient-to-br ${category.gradient} transition-all duration-300 hover:-translate-y-0.5 hover:border-amber/40 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_24px_rgba(245,158,11,0.12)] active:scale-[0.99]`}
+      className={`home-category-tile group relative flex min-h-[3.25rem] items-center gap-2 overflow-hidden rounded-lg border border-border bg-gradient-to-br px-2.5 py-2 no-underline transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-px hover:border-amber/40 hover:shadow-[0_0_16px_rgba(245,158,11,0.12)] active:scale-[0.99] ${category.gradient}`}
     >
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-2 -top-4 font-display text-[5rem] leading-none text-white/[0.04] transition-transform duration-300 group-hover:scale-110"
+        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-border/50 bg-black/20 text-xs text-zinc-300"
       >
         {category.symbol}
       </span>
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(245,158,11,0.08),transparent_55%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-      />
-      <div className="category-tile-footer absolute inset-x-0 bottom-0 px-4 py-3">
-        <h3 className="font-display text-lg font-semibold tracking-wide text-zinc-50 drop-shadow-sm">
+      <span className="min-w-0 flex-1">
+        <span className="block truncate text-xs font-semibold leading-tight text-zinc-100 group-hover:text-amber sm:text-sm">
           {category.label}
-        </h3>
-        <p className="mt-0.5 text-xs text-zinc-400 line-clamp-1 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-          {category.description}
-        </p>
-      </div>
+        </span>
+      </span>
     </Link>
   );
 }

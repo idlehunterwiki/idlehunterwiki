@@ -1,12 +1,12 @@
 export type WikiCategory =
   | "getting-started"
-  | "classes"
-  | "equipment"
-  | "skills"
-  | "world"
-  | "bosses"
-  | "resources"
-  | "guides";
+  | "heroes-classes"
+  | "gear-items"
+  | "gems"
+  | "talents"
+  | "hunting-dungeons"
+  | "currencies"
+  | "game-modes";
 
 export interface WikiArticleFrontmatter {
   title: string;

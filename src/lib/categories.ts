@@ -12,60 +12,74 @@ export const WIKI_CATEGORIES: CategoryMeta[] = [
   {
     id: "getting-started",
     label: "Getting Started",
-    description: "Core mechanics and your first hours.",
+    description: "First steps, hunt log, and idle basics.",
     gradient: "from-amber-950/90 via-zinc-900 to-zinc-950",
     symbol: "◆",
   },
   {
-    id: "classes",
-    label: "Classes",
-    description: "Playable classes and builds.",
+    id: "heroes-classes",
+    label: "Heroes & Classes",
+    description: "Warrior, Hunter, Mage, and hero stats.",
     gradient: "from-red-950/80 via-zinc-900 to-zinc-950",
     symbol: "⚔",
   },
   {
-    id: "equipment",
-    label: "Equipment",
-    description: "Weapons, armor, and rarity.",
+    id: "gear-items",
+    label: "Gear & Items",
+    description: "Equipment slots, rarity, and inventory.",
     gradient: "from-zinc-700/50 via-zinc-900 to-zinc-950",
     symbol: "⛨",
   },
   {
-    id: "skills",
-    label: "Skills",
-    description: "Talents and skill trees.",
+    id: "gems",
+    label: "Gems",
+    description: "Gem pouch, sockets, and bonuses.",
+    gradient: "from-cyan-950/70 via-zinc-900 to-zinc-950",
+    symbol: "◇",
+  },
+  {
+    id: "talents",
+    label: "Talents",
+    description: "Talent trees and build planning.",
     gradient: "from-purple-950/80 via-zinc-900 to-zinc-950",
     symbol: "✦",
   },
   {
-    id: "world",
-    label: "World",
-    description: "Zones and dungeons.",
+    id: "hunting-dungeons",
+    label: "Hunting & Dungeons",
+    description: "Zones, enemies, and dungeon runs.",
     gradient: "from-emerald-950/70 via-zinc-900 to-zinc-950",
     symbol: "⌖",
   },
   {
-    id: "bosses",
-    label: "Bosses",
-    description: "World bosses and loot.",
-    gradient: "from-red-900/60 via-zinc-950 to-black",
-    symbol: "☠",
-  },
-  {
-    id: "resources",
-    label: "Resources",
-    description: "Currencies, materials, and crafting.",
+    id: "currencies",
+    label: "Currencies",
+    description: "Gold, Divine, Relic, and other resources.",
     gradient: "from-amber-900/50 via-zinc-900 to-zinc-950",
     symbol: "◈",
   },
   {
-    id: "guides",
-    label: "Guides",
-    description: "Tips for late game and endgame.",
+    id: "game-modes",
+    label: "Game Modes",
+    description: "Duels, Heist, Gamble, and Leaderboard.",
     gradient: "from-indigo-950/70 via-zinc-900 to-zinc-950",
-    symbol: "¶",
+    symbol: "⚑",
   },
 ];
+
+/** Core categories shown on the home page — full list stays in the nav menu. */
+export const HOME_FEATURED_CATEGORY_IDS: WikiCategory[] = [
+  "getting-started",
+  "heroes-classes",
+  "gear-items",
+  "talents",
+  "hunting-dungeons",
+  "game-modes",
+];
+
+export function getFeaturedCategories(): CategoryMeta[] {
+  return HOME_FEATURED_CATEGORY_IDS.map((id) => getCategoryMeta(id));
+}
 
 export function getCategoryMeta(id: WikiCategory): CategoryMeta {
   const meta = WIKI_CATEGORIES.find((c) => c.id === id);

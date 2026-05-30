@@ -111,13 +111,15 @@ export function getAllSlugs(): string[] {
 }
 
 export function getRecentArticles(limit = 6): WikiArticleSummary[] {
-  return [...getAllArticleSummaries()]
-    .sort((a, b) => {
-      const dateA = a.updatedAt ?? "";
-      const dateB = b.updatedAt ?? "";
-      return dateB.localeCompare(dateA);
-    })
-    .slice(0, limit);
+  return getAllUpdates().slice(0, limit);
+}
+
+export function getAllUpdates(): WikiArticleSummary[] {
+  return [...getAllArticleSummaries()].sort((a, b) => {
+    const dateA = a.updatedAt ?? "";
+    const dateB = b.updatedAt ?? "";
+    return dateB.localeCompare(dateA);
+  });
 }
 
 export function getSpotlightArticle(): WikiArticleSummary | null {

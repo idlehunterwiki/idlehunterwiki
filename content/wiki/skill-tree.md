@@ -1,7 +1,7 @@
 ---
 title: Skill Tree
 description: How talent points work, respec, and synergies between branches.
-category: skills
+category: talents
 tags: [talents, skills, build]
 order: 1
 updatedAt: "2026-05-29"

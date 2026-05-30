@@ -1,7 +1,7 @@
 ---
 title: World & Zones
 description: All regions from Grindwood to endgame realms with recommended levels.
-category: world
+category: hunting-dungeons
 tags: [zones, world, progression]
 featured: true
 order: 1

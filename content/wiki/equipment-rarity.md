@@ -1,7 +1,7 @@
 ---
 title: Equipment & Rarity
 description: Understand loot colors, stats, and how to optimize your gear score.
-category: equipment
+category: gear-items
 tags: [loot, gear, rarity]
 featured: true
 order: 1

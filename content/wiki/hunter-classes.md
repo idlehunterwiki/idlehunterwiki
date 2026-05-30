@@ -1,7 +1,7 @@
 ---
 title: Hunter Classes
 description: Overview of all playable classes, their roles, and recommended builds.
-category: classes
+category: heroes-classes
 tags: [classes, build, DPS]
 featured: true
 order: 1

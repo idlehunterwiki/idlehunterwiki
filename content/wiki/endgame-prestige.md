@@ -1,7 +1,7 @@
 ---
 title: Endgame & Prestige
 description: Prestige loop, paragon levels, and maximizing account power.
-category: guides
+category: game-modes
 tags: [endgame, prestige, paragon]
 featured: true
 order: 1

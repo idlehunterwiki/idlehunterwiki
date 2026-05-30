@@ -180,5 +180,21 @@ create policy "profiles_update_admin"
     )
   );
 
+-- Public stats for the wiki home page (aggregate counts only)
+create or replace function public.get_public_wiki_stats()
+returns json
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select json_build_object(
+    'member_count', (select count(*)::int from public.profiles)
+  );
+$$;
+
+revoke all on function public.get_public_wiki_stats() from public;
+grant execute on function public.get_public_wiki_stats() to anon, authenticated;
+
 -- Första admin: byt e-post efter att du registrerat dig
 -- update public.profiles set role = 'admin' where email = 'din@epost.se';

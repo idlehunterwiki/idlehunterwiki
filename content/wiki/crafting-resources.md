@@ -1,7 +1,7 @@
 ---
-title: Crafting & Resources
-description: Materials, currencies, and how to craft powerful equipment.
-category: resources
+title: Currencies
+description: Gold, Divine, Relic, and how to spend them wisely.
+category: currencies
 tags: [crafting, material, gold]
 order: 1
 updatedAt: "2026-05-29"

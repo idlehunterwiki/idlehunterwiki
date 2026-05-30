@@ -1,4 +1,4 @@
-import { SiteFooter } from "@/components/layout/SiteFooter";
+import { ScrollAwareFooter } from "@/components/layout/ScrollAwareFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { getCurrentProfile } from "@/lib/auth";
 import { getAllArticleSummaries } from "@/lib/wiki";
@@ -19,7 +19,7 @@ export async function WikiShell({ children }: { children: React.ReactNode }) {
         authConfig={authConfig}
       />
       <main className="flex-1">{children}</main>
-      <SiteFooter />
+      <ScrollAwareFooter />
     </div>
   );
 }

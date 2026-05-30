@@ -1,7 +1,7 @@
 ---
 title: World Bosses
 description: Schedules, mechanics, and loot tables for all world bosses.
-category: bosses
+category: hunting-dungeons
 tags: [boss, world boss, loot]
 featured: true
 order: 1

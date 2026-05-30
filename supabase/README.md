@@ -21,6 +21,8 @@ You can also run `backfill-profiles.sql` alone if you only need the data fix wit
 
 For **account settings** (email notification toggles, delete account), run `patch-account-settings.sql` once.
 
+For **home page wiki stats** (registered hunter count), run `patch-wiki-stats.sql` once.
+
 ## 3. Auth settings
 
 Under **Authentication → URL Configuration**:
